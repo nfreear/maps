@@ -1,8 +1,15 @@
 
 :root {
+  --map-width: 970px;
+  --map-height: 768px;
+  --map-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/1864_Mitchell_Map_of_the_World_on_Mercator_Projection_-_Geographicus_-_World-mitchell-1864.jpg/970px-1864_Mitchell_Map_of_the_World_on_Mercator_Projection_-_Geographicus_-_World-mitchell-1864.jpg);
+  --map-image-old: url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/World_1910.jpg/960px-World_1910.jpg);
+  --pin-image: url(https://upload.wikimedia.org/wikipedia/commons/e/ed/Map_pin_icon.svg);
   --transition: 250ms;
 }
 
+/* Accessibility.
+*/
 @media (prefers-reduced-motion) {
   :root {
     --transition: 0;
@@ -46,16 +53,17 @@
   }
 
   #mapRegion {
-    border-color: gray;
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/World_1910.jpg/960px-World_1910.jpg);
+    background-image: var(--map-image);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    max-width: 794px;
-    height: 600px;
+    max-width: var(--map-width);
+    height: var(--map-height);
 
     position: relative;
 
+    /* Accessibility
+    */
     .visually-hidden,
     #panButton,
     & > h2,
@@ -83,29 +91,34 @@
 
     #controlsGroup {
       position: absolute;
-      right: .5rem;
-      top: .5rem;
+      right: .8rem;
+      top: 4rem;
 
       button {
         margin: 1px 0;
-        width: 2rem;
+        height: 2.3rem;
+        width: 2.3rem;
       }
     }
 
     [ data-pin-id = uk ] {
-      position: absolute;
-      left: 48%;
-      top: 34%;
+      left: 65%;
+      top: 35%;
     }
 
     [ data-pin-id = zh ] {
-      position: absolute;
-      left: 80%;
+      left: 6%;
       top: 41%;
     }
 
+    [ data-pin-id = tim ] {
+      left: 65%;
+      top: 50%;
+    }
+
     [ data-pin-id ] {
-      background-image: url(https://upload.wikimedia.org/wikipedia/commons/e/ed/Map_pin_icon.svg);
+      position: absolute;
+      background-image: var(--pin-image);
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -131,8 +144,8 @@
       bottom: .2rem;
       background: #fafafa;
       display: inline-block;
-      font-size: smaller;
-      padding: .2rem;
+      font-size: .8rem;
+      padding: .1rem;
     }
   }
 }
@@ -147,17 +160,24 @@
 
   label {
     margin-right: 1rem;
+    padding: .5rem 0;
   }
 }
 
 dialog {
-  button {
-    X_padding: .5rem;
-  }
+  background-color: #fafafa;
+}
+
+button {
+  color: inherit;
 }
 
 body {
+  background-color: #fefefe;
+  color: #333;
+  font-family: sans-serif;
+  line-height: 1.5;
   margin: auto;
-  max-width: 800px;
+  max-width: var(--map-width);
   padding: 0 1rem;
 }

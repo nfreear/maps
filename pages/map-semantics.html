@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="style/map-semantics.css">
 
@@ -9,9 +10,14 @@
   <title>Demo map — structure & semantics</title>
   <h1>Demo map — structure & semantics</h1>
 
-<p id="mapDesc">
-  Below is a mock-up of a map using <a href="https://commons.wikimedia.org/wiki/File:World_1910.jpg">this 1910 world map</a> as a background image.
-</p>
+<article id="mapDesc">
+  <p>
+    Below is a mock-up of a map using an <a href="https://commons.wikimedia.org/wiki/File:1864_Mitchell_Map_of_the_World_on_Mercator_Projection_-_Geographicus_-_World-mitchell-1864.jpg">1864 Mitchell Map of the World</a> as a background image.
+  </p>
+  <p>
+    Use the <q>Map style</q> radio buttons below to remove the style from the map and reveal the underlying structure and semantics of the HTML.
+  </p>
+</article>
 
 <fieldset id="mapStyle">
   <legend>Map style</legend>
@@ -20,13 +26,14 @@
 </fieldset>
 
 
+<!-- A <section> element with a name has a role of "region". -->
 <section
   id="mapRegion"
   aria-roledescription="map"
   aria-labelledby="mapLabel"
   aria-describedby="mapDesc"
   >
-  <h2 id="mapLabel">The map region</h2>
+  <h2 id="mapLabel">Map region: <q>A map of the world</q></h2>
 
   <button id="panButton" data-icon="✥">
     <sr-only>Use arrow keys to pan, +/- keys to zoom in and out.</sr-only>
@@ -36,20 +43,10 @@
     <h3 id="pinsLabel">Map pins</h3>
     <ul aria-labelledby="pinsLabel">
       <li><button data-pin-id="uk" data-tip="A"><sr-only>Marker A: London, UK</sr-only></button></li>
-      <li><button data-pin-id="zh"><sr-only>Marker B: Beijing, China</sr-only></button></li>
-      <li><button>…</button></li>
+      <li><button data-pin-id="zh"><sr-only>Marker B: “Peking”, China</sr-only></button></li>
+      <li><button data-pin-id="tim"><sr-only>Marker C: “Timbuctoo, Soud Guinea”</button></li>
     </ul>
   </fieldset>
-
-  <dialog aria-labelledby="dlgLabel">
-    <h2 id="dlgLabel">Map dialog</h2>
-    <form method="dialog">
-      <p>
-        <output id="output">-</output>
-      </p>
-      <button data-icon="&times;"><sr-only>Close</sr-only></button>
-    </form>
-  </dialog>
 
   <fieldset id="controlsGroup" aria-labelledby="controlsLabel">
     <h3 id="controlsLabel">Map controls</h3>
@@ -62,11 +59,22 @@
   <fieldset id="attributionGroup" aria-labelledby="attribLabel">
     <h3 id="attribLabel">Attribution</h3>
     <ul>
-      <li><a href="https://commons.wikimedia.org/wiki/File:World_1910.jpg">Map tiles — &copy; copyright …</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/Public_domain">Map tile — License: Public domain</a></li>
     </ul>
   </fieldset>
 
-</section>
+
+  <dialog aria-labelledby="dlgLabel">
+    <h3 id="dlgLabel">Map dialog</h3>
+    <form method="dialog">
+      <p>
+        <output id="output">-</output>
+      </p>
+      <button data-icon="&times;"><sr-only>Close</sr-only></button>
+    </form>
+  </dialog>
+
+</section><!-- End: map section. -->
 
   <script type="module" src="lib/map-semantics.js"></script>
 </html>
