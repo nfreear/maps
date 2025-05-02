@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="style/map-semantics.css">
+
+  <link rel="codepen" href="https://codepen.io/nfreear/pen/YPPemRx">
+
+  <title>Demo map — structure & semantics</title>
+  <h1>Demo map — structure & semantics</h1>
+
+<p id="mapDesc">
+  Below is a mock-up of a map using <a href="https://commons.wikimedia.org/wiki/File:World_1910.jpg">this 1910 world map</a> as a background image.
+</p>
+
+<fieldset id="mapStyle">
+  <legend>Map style</legend>
+  <label><input type="radio" name="ms" value="true" checked>With style</label>
+  <label><input type="radio" name="ms" value="false">No style (semantics only)</label>
+</fieldset>
+
+
+<section
+  id="mapRegion"
+  aria-roledescription="map"
+  aria-labelledby="mapLabel"
+  aria-describedby="mapDesc"
+  >
+  <h2 id="mapLabel">The map region</h2>
+
+  <button id="panButton" data-icon="✥">
+    <sr-only>Use arrow keys to pan, +/- keys to zoom in and out.</sr-only>
+  </button>
+
+  <fieldset id="pinsGroup" aria-labelledby="pinsLabel">
+    <h3 id="pinsLabel">Map pins</h3>
+    <ul aria-labelledby="pinsLabel">
+      <li><button data-pin-id="uk" data-tip="A"><sr-only>Marker A: London, UK</sr-only></button></li>
+      <li><button data-pin-id="zh"><sr-only>Marker B: Beijing, China</sr-only></button></li>
+      <li><button>…</button></li>
+    </ul>
+  </fieldset>
+
+  <dialog aria-labelledby="dlgLabel">
+    <h2 id="dlgLabel">Map dialog</h2>
+    <form method="dialog">
+      <p>
+        <output id="output">-</output>
+      </p>
+      <button data-icon="&times;"><sr-only>Close</sr-only></button>
+    </form>
+  </dialog>
+
+  <fieldset id="controlsGroup" aria-labelledby="controlsLabel">
+    <h3 id="controlsLabel">Map controls</h3>
+    <ul>
+      <li><button name="zoomInButton" data-icon="+"><sr-only>Zoom in</sr-only></button></li>
+      <li><button name="zoomOutButton" data-icon="&minus;"><sr-only>Zoom out</sr-only></button></li>
+    </ul>
+  </fieldset>
+
+  <fieldset id="attributionGroup" aria-labelledby="attribLabel">
+    <h3 id="attribLabel">Attribution</h3>
+    <ul>
+      <li><a href="https://commons.wikimedia.org/wiki/File:World_1910.jpg">Map tiles — &copy; copyright …</a></li>
+    </ul>
+  </fieldset>
+
+</section>
+
+  <script type="module" src="lib/map-semantics.js"></script>
+</html>

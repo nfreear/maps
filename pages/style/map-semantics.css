@@ -1,0 +1,163 @@
+
+:root {
+  --transition: 250ms;
+}
+
+@media (prefers-reduced-motion) {
+  :root {
+    --transition: 0;
+  }
+}
+
+[ data-icon ]::after {
+  content: attr(data-icon) / '';
+}
+
+.X_[ data-tip ]:hover::after {
+  content: attr(data-tip);
+  margin-left: 1rem;
+}
+
+#mapRegion {
+  background-color: #f5f5f5;
+  border: 1px solid silver;
+  margin: 1rem 0;
+  transition: all var(--transition);
+}
+
+[ data-map-style = false ] {
+  section {
+    padding: 0 1rem;
+  }
+
+  fieldset {
+    margin: 1rem 0;
+  }
+
+  li {
+    margin: .2rem 0;
+  }
+}
+
+[ data-map-style = true ] {
+
+  [ data-icon ]::after {
+    font-size: x-large;
+  }
+
+  #mapRegion {
+    border-color: gray;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/World_1910.jpg/960px-World_1910.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    max-width: 794px;
+    height: 600px;
+
+    position: relative;
+
+    .visually-hidden,
+    #panButton,
+    & > h2,
+    fieldset > h3,
+    sr-only {
+      position: absolute;
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    #panButton:focus {
+      height: 2.2rem;
+      width: 2.2rem;
+    }
+
+    ul,
+    fieldset {
+      border: none;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #controlsGroup {
+      position: absolute;
+      right: .5rem;
+      top: .5rem;
+
+      button {
+        margin: 1px 0;
+        width: 2rem;
+      }
+    }
+
+    [ data-pin-id = uk ] {
+      position: absolute;
+      left: 48%;
+      top: 34%;
+    }
+
+    [ data-pin-id = zh ] {
+      position: absolute;
+      left: 80%;
+      top: 41%;
+    }
+
+    [ data-pin-id ] {
+      background-image: url(https://upload.wikimedia.org/wikipedia/commons/e/ed/Map_pin_icon.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: rgba(255,255,255, .3);
+      border-color: transparent;
+      border-radius: .2rem;
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+
+      &:focus,
+      &:hover {
+        background-color: white;
+        border-color: red;
+      }
+
+      transition: all var(--transition);
+    }
+
+    #attributionGroup {
+      position: absolute;
+      right: .2rem;
+      bottom: .2rem;
+      background: #fafafa;
+      display: inline-block;
+      font-size: smaller;
+      padding: .2rem;
+    }
+  }
+}
+
+* {
+  outline-offset: .3rem;
+}
+
+#mapStyle {
+  margin: 1rem 0;
+  padding: 1rem;
+
+  label {
+    margin-right: 1rem;
+  }
+}
+
+dialog {
+  button {
+    X_padding: .5rem;
+  }
+}
+
+body {
+  margin: auto;
+  max-width: 800px;
+  padding: 0 1rem;
+}

@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nfreear/maps.git"
+  },
+  "author": "Nick Freear",
+  "devDependencies": {
+    "servor": "^4.0.2"
+  },
+  "scripts": {
+    "start": "servor"
+  }
+}
