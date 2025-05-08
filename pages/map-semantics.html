@@ -17,16 +17,19 @@
   <p>
     Use the <q>Map style</q> radio buttons below to remove the style from the map and reveal the underlying structure and semantics of the HTML.
   </p>
+  <p>
+    (Note, it is just a mock up &mdash; zoom and panning do NOT work!)
+  </p>
 </article>
 
 <fieldset id="mapStyle">
   <legend>Map style</legend>
   <label><input type="radio" name="ms" value="true" checked>With style</label>
-  <label><input type="radio" name="ms" value="false">No style (semantics only)</label>
+  <label><input type="radio" name="ms" value="false">No map style (semantics only)</label>
 </fieldset>
 
 
-<!-- A <section> element with a name has a role of "region". -->
+<!-- A <section> element with a computed name has a role of "region". -->
 <section
   id="mapRegion"
   aria-roledescription="map"
@@ -42,7 +45,14 @@
   <fieldset id="pinsGroup" aria-labelledby="pinsLabel">
     <h3 id="pinsLabel">Map pins</h3>
     <ul aria-labelledby="pinsLabel">
-      <li><button data-pin-id="uk" data-tip="A"><sr-only>Marker A: London, UK</sr-only></button></li>
+      <li>
+        <details data-pin-id="uk">
+          <summary><sr-only>Marker A: London, UK</sr-only></summary>
+          <div class="pinBody">
+            <p>Some information about London …</p>
+          </div>
+        </details>
+      </li>
       <li><button data-pin-id="zh"><sr-only>Marker B: “Peking”, China</sr-only></button></li>
       <li><button data-pin-id="tim"><sr-only>Marker C: “Timbuctoo, Soud Guinea”</button></li>
     </ul>
@@ -62,7 +72,6 @@
       <li><a href="https://commons.wikimedia.org/wiki/Public_domain">Map tile — License: Public domain</a></li>
     </ul>
   </fieldset>
-
 
   <dialog aria-labelledby="dlgLabel">
     <h3 id="dlgLabel">Map dialog</h3>

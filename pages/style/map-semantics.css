@@ -32,7 +32,7 @@
   transition: all var(--transition);
 }
 
-[ data-map-style = false ] {
+[ data-map-style = 'false' ] {
   section {
     padding: 0 1rem;
   }
@@ -46,7 +46,7 @@
   }
 }
 
-[ data-map-style = true ] {
+[ data-map-style = 'true' ] {
 
   [ data-icon ]::after {
     font-size: x-large;
@@ -146,6 +146,14 @@
       display: inline-block;
       font-size: .8rem;
       padding: .1rem;
+    }
+
+    #pinsGroup {
+      summary::marker {
+        X_display: none !important;
+        color: transparent;
+        font-size: xx-small;
+      }
     }
   }
 }
