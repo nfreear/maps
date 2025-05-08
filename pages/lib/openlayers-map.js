@@ -12,7 +12,9 @@ import TileLayer from 'ol/layer/Tile.js';
 import OSM from 'ol/source/OSM.js';
 import TileDebug from 'ol/source/TileDebug.js';
 
-import GeoJSON from 'ol/format/GeoJSON.js';
+// import GeoJSON from 'ol/format/GeoJSON.js';
+import MyGeoJSON from '../../src/lib/GeoJSON.js';
+import ButtonPin from '../../src/lib/ButtonPin.js';
 
 /* import Point from 'ol/geom/Point.js';
 import Icon from 'ol/style/Icon.js';
@@ -23,7 +25,10 @@ import VectorSource from 'ol/source/Vector.js'; */
 
 // setTimeout(() => olMap(), 5000);
 
-export default function openLayersMap () {
+// const jsonUrl = 'https://github.com/nfreear/elements/blob/main/demo/data/landmarks.geo.json';
+const jsonUrl = '../data/landmarks.geo.json';
+
+export default async function openLayersMap () {
   console.debug('module:', M, window.ol);
 
   const { Map, View, Feature, Overlay, proj } = window.ol;
@@ -52,7 +57,7 @@ export default function openLayersMap () {
     target: mapElem, // 'map',
     view: new View({
       center: londonWebMercator, // [-0.1257, 51.508], // [0, 0],
-      zoom: 4,
+      zoom: 11,
     }),
   });
 
@@ -82,28 +87,37 @@ export default function openLayersMap () {
 
   map.addLayer(vectorLayer); */
 
-  const pinButton = document.querySelector('#pinButton');
   const dialog = document.querySelector('dialog');
-  const pin = new Overlay({
-    element: pinButton,
-    position: londonWebMercator
-  });
 
-  const pinButtonEdin = document.createElement('button');
-  pinButtonEdin.textContent = 'E';
-  const pinEdin = new Overlay({
-    element: pinButtonEdin,
-    position: edinburghWebMercator
-  })
-  // pin.setPosition([-0.1257, 51.508]);
+  const geoJson = new MyGeoJSON();
+  await geoJson.fetch(jsonUrl);
 
-  console.debug('pin position:', pin.getPosition());
+  geoJson.eachFeature((feature, idx) => {
+    // console.debug('Feature:', idx, geometry, properties);
+    const { properties, geometry } = feature;
+    const { name, popupContent } = properties;
+    const [ lon, lat ] = geometry.coordinates;
+    const posWebMercator = fromLonLat([ lon, lat ]);
 
-  map.addOverlay(pin);
-  map.addOverlay(pinEdin);
+    const pinOverlay = new ButtonPin({ // new Overlay({
+      // element: pinButton,
+      feature,
+      position: posWebMercator,
+      onclick: (ev) => {
+        const { feature } = ev.detail;
+        const { popupContent } = feature.properties;
 
-  pinButton.addEventListener('click', (ev) => {
-    console.debug('click:', ev);
-    dialog.showModal();
+        console.debug('Pin click:', feature, ev);
+
+        dialog.textContent = popupContent;
+        dialog.showModal();
+      }
+    });
+
+    map.addOverlay(pinOverlay);
+
+    pinOverlay.postProcess();
+
+    console.debug('Add feature:', idx, pinOverlay.getPosition(), properties);
   });
 }
