@@ -1,7 +1,7 @@
 
 const mapStyle = document.querySelector('#mapStyle');
-
 const mapRegion = document.querySelector('#mapRegion');
+
 const panButton = mapRegion.querySelector('#panButton');
 const controlsGroup = mapRegion.querySelector('#controlsGroup');
 const pinsGroup = mapRegion.querySelector('#pinsGroup');
