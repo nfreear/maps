@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@>=2.0.0-alpha.1/dist/leaflet.css">
+<link rel="stylesheet" href="./style/leaflet.v2.css">
+
+<title> Leaflet V2 </title>
+
+<h1> Leaflet v2 map demo </h1>
+
+<ul>
+  <li><a href="https://leafletjs.com/2025/05/18/leaflet-2.0.0-alpha.html">Leaflet</a> version: <tt id="version">-</tt></li>
+  <li>Browser: <q id="ua">-</q></li>
+</ul>
+
+
+<div id="map">Loading map...</div>
+
+
+<script type="importmap">
+{
+  "imports": {
+    "dist:Leaflet.v2": "https://unpkg.com/leaflet@>=2.0.0-alpha.1/dist/leaflet.js",
+    "src:Leaflet.v2": "https://unpkg.com/leaflet@>=2.0.0-alpha.1/src/Leaflet.js",
+    "local:LeafletAppV2": "./lib/leaflet.v2.js"
+  }
+}
+</script>
+
+<script type="module">
+  import leafletAppV2 from 'local:LeafletAppV2';
+
+  leafletAppV2();
+</script>
+
+</html>

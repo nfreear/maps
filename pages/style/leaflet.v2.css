@@ -1,0 +1,18 @@
+
+#map {
+  border: 1px solid silver;
+  height: 340px;
+}
+
+:focus {
+  outline-offset: .4rem;
+}
+
+p,
+ul {
+  line-height: 1.6;
+}
+
+body {
+  margin: 1rem;
+}
