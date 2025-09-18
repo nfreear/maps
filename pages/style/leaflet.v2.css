@@ -1,11 +1,21 @@
 
 #map {
   border: 1px solid silver;
+  border-radius: 3px;
   height: 340px;
 }
 
-:focus {
-  outline-offset: .4rem;
+:focus-visible {
+  border-radius: 2px;
+  outline: 4px solid currentColor;
+  outline-offset: .25rem;
+  transition: outline 300ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :focus-visible {
+    transition: none;
+  }
 }
 
 p,
