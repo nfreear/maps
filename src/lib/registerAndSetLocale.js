@@ -9,6 +9,7 @@ import localesToArray from 'local:localesToArray';
  * (Depends on `Leaflet.I18n` class)
  *
  * @see https://github.com/simon04/Leaflet/blob/i18n/src/core/I18n.js
+ * @return {Object}
  */
 export function registerAndSetLocale () {
   const locales = localesToArray(localesModule);
@@ -25,7 +26,7 @@ export function registerAndSetLocale () {
 
   I18n.setLocale(foundLocale.code);
 
-  document.querySelector('#locale').textContent = foundLocale.code;
+  // document.querySelector('#locale').textContent = foundLocale.code;
 
   console.log('Registered locales:', locales, [ I18n ]);
   console.log('Set locale:', foundLocale.code);
@@ -35,13 +36,14 @@ export function registerAndSetLocale () {
 
 /**
  * Extract a language/locale code from a URL parameter.
+ *
  * @example `/map.html?lang=fr`
- * @return {String}
+ * @return {String} - A language code, for example "fr" or "zh-CN".
  */
-export function langFromUrlParam (paramName = 'lang', localeRegex = /^(fr|zh-CN)$/, defLang = 'en') {
+export function langFromUrlParam (paramName = 'lang', localesRegex = /^(fr|zh-CN)$/, defLang = 'en') {
   const params = new URL(window.location).searchParams;
   let langCode = params.get(paramName);
-  if (langCode && localeRegex.test(langCode)) {
+  if (langCode && localesRegex.test(langCode)) {
     console.debug('langFromUrlParam - Supported:', langCode);
   } else if (langCode) {
     console.warn('langFromUrlParam - Not supported:', langCode);

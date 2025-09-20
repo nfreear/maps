@@ -1,5 +1,5 @@
 import {Class, Browser, Util} from 'src:core'; // Nick:
-import {Point} from 'src/geometry';
+import {Point} from 'src:geometry';
 
 const { setOptions } = Util;
 

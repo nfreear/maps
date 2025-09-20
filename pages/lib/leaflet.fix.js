@@ -3,7 +3,9 @@ import MOD, { Map, Marker, TileLayer, version } from 'dist:Leaflet.v2';
 import { MyMarker } from 'MyMarker';
 
 /**
+ * Prototype for a fix for Leaflet/9898.
  *
+ * @see https://github.com/Leaflet/Leaflet/issues/9898
  * @see https://leafletjs.com/2025/05/18/leaflet-2.0.0-alpha.html
  * @see https://leafletjs.com/reference-2.0.0.html
  * @see https://github.com/Leaflet/Leaflet/pull/9845
@@ -25,11 +27,9 @@ function leafletFixV2 () {
   })
   .on('click', (ev) => {
     console.log('Marker click:', ev);
-    alert('Marker click!');
+    alert('Marker - click event!');
   })
   .addTo(map);
-
-  // marker._shadow.addEventListener('click', (ev) => alert('Click'));
 
   document.querySelector('#version').textContent = version; // `Leaflet version: ${version}`;
   document.querySelector('#ua').textContent = navigator.userAgent;
