@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@>=2.0.0-alpha.1/dist/leaflet.css">
+<link rel="stylesheet" href="./style/leaflet.v2.css">
+
+<title> Leaflet V2 — i18n</title>
+
+<h1> Leaflet V2 — i18n </h1>
+
+<nav aria-label="Language selector">
+  <ul>
+    <li><a href="?">English (reset)</a>
+    <li><a href="?lang=fr">French</a>
+    <li><a href="?lang=zh-CN">Simplified Chinese</a>
+  </ul>
+</nav>
+
+<ul>
+  <li><a href="https://leafletjs.com/2025/05/18/leaflet-2.0.0-alpha.html">Leaflet</a> version: <tt id="version">-</tt></li>
+  <li>Browser: <q id="ua">-</q></li>
+  <li>Locale: <tt id="locale">-</tt></li>
+</ul>
+
+<div id="map" lang="zh-cn">
+  <p lang="en">Loading map…</p>
+</div>
+
+
+<script type="importmap">
+{
+  "imports": {
+    "dist:Leaflet.v2": "https://unpkg.com/leaflet@>=2.0.0-alpha.1/dist/leaflet.js",
+    "local:Leaflet.i18n": "../leaflet-i18n/src/Leaflet.js",
+    "local:registerAndSetLocale": "../src/lib/registerAndSetLocale.js",
+    "local:localesToArray": "../src/lib/localesToArray.js",
+    "local:Locales": "../src/locale/index.js"
+  }
+}
+</script>
+
+<script type="module">
+  // https://leafletjs.com/2025/05/18/leaflet-2.0.0-alpha.html
+  // https://leafletjs.com/reference-2.0.0.html
+  // https://github.com/Leaflet/Leaflet/pull/9845
+
+  import { Map, Marker, TileLayer, I18n, version } from 'local:Leaflet.i18n';
+  import registerAndSetLocale from 'local:registerAndSetLocale';
+
+  const locale = registerAndSetLocale();
+
+  const map = new Map('map', {
+    center: [51.505, -0.09],
+    zoom: 13
+  });
+
+  const tiles = new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: `<a href="http://www.openstreetmap.org/copyright">${I18n.translate('© OpenStreetMap')}</a>`,
+  })
+  .addTo(map);
+
+  const marker = new Marker([51.5, -0.09], {
+    alt: I18n.translate('Marker: {name}', { name: 'Sterry Street, London, SE1.' }),
+    title: I18n.translate('Marker: {name}', { name: 'Sterry Street, London, SE1.' }),
+  })
+  .on('click', (ev) => {
+    console.debug('Marker click:', ev);
+    alert('click');
+  })
+  .addTo(map);
+
+  document.querySelector('#version').textContent = version; // `Leaflet version: ${version}`;
+  document.querySelector('#ua').textContent = navigator.userAgent;
+
+  console.log('>> Leaflet V2:', version, map, marker);
+</script>
+
+</html>

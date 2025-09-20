@@ -1,3 +1,4 @@
 node_modules
 leaflet*
+!pages/leaflet*
 test*.html
