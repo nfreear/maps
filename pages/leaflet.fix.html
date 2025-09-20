@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@>=2.0.0-alpha.1/dist/leaflet.css">
+<link rel="stylesheet" href="./style/leaflet.v2.css">
+
+<title> Leaflet V2 — with fix </title>
+
+<h1> Leaflet V2 — with fix </h1>
+
+<ul>
+  <li><a href="https://leafletjs.com/2025/05/18/leaflet-2.0.0-alpha.html">Leaflet</a> version: <tt id="version">-</tt></li>
+  <li>Browser: <q id="ua">-</q></li>
+  <li>Marker element: <tt id="marker"></tt>
+</ul>
+
+
+<div id="map">Loading map...</div>
+
+
+<script type="importmap">
+{
+  "imports": {
+    "dist:Leaflet.v2": "https://unpkg.com/leaflet@>=2.0.0-alpha.1/dist/leaflet.js",
+    "src:Leaflet.v2": "https://unpkg.com/leaflet@>=2.0.0-alpha.1/src/Leaflet.js",
+
+    "src:core": "https://unpkg.com/leaflet@2.0.0-alpha.1/src/core/index.js",
+    "../../geo/": "https://unpkg.com/leaflet@2.0.0-alpha.1/src/geo/",
+    "src/geometry": "https://unpkg.com/leaflet@2.0.0-alpha.1/src/geometry/index.js",
+    "../../layer/": "https://unpkg.com/leaflet@2.0.0-alpha.1/src/layer/",
+    "src:Marker.js": "https://unpkg.com/leaflet@2.0.0-alpha.1/src/layer/marker/Marker.js",
+    "Icon.Default.js": "https://unpkg.com/leaflet@2.0.0-alpha.1/src/layer/marker/Icon.Default.js",
+    "src:dom": "https://unpkg.com/leaflet@2.0.0-alpha.1/src/dom/index.js",
+
+    "MyMarker": "../src/leaflet/marker/MyMarker.js",
+    "./Icon.js": "../src/leaflet/marker/Icon.js",
+    "local:LeafletFixV2": "./lib/leaflet.fix.js",
+    "local:LeafletAppV2": "./lib/leaflet.v2.js"
+  },
+  "scopes": {
+    "src:marker/": {
+
+    }
+  }
+}
+</script>
+
+<script type="module">
+  import leafletFixV2 from 'local:LeafletFixV2';
+
+  leafletFixV2();
+</script>
+
+</html>

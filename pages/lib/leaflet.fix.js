@@ -1,12 +1,14 @@
 import MOD, { Map, Marker, TileLayer, version } from 'dist:Leaflet.v2';
 
+import { MyMarker } from 'MyMarker';
+
 /**
  *
  * @see https://leafletjs.com/2025/05/18/leaflet-2.0.0-alpha.html
  * @see https://leafletjs.com/reference-2.0.0.html
  * @see https://github.com/Leaflet/Leaflet/pull/9845
  */
-function leafletAppV2 () {
+function leafletFixV2 () {
   const map = new Map('map', {
     center: [51.505, -0.09],
     zoom: 13
@@ -18,7 +20,7 @@ function leafletAppV2 () {
   })
   .addTo(map);
 
-  const marker = new Marker([51.5, -0.09], {
+  const marker = new MyMarker([51.5, -0.09], {
     alt: 'Marker A: Sterry Street, London, SE1.'
   })
   .on('click', (ev) => {
@@ -44,4 +46,4 @@ function checkMarkerType () {
   document.querySelector('#marker').textContent = markerElem.tagName;
 }
 
-export default leafletAppV2;
+export default leafletFixV2;
