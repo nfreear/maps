@@ -5,6 +5,13 @@
   height: 340px;
 }
 
+.leaflet-div-icon {
+  border: 3px solid darkorange;
+  border-radius: 50%;
+  min-height: 1rem;
+  min-width: 1rem;
+}
+
 :focus-visible {
   border-radius: 2px;
   outline: 4px solid currentColor;
