@@ -1,5 +1,5 @@
 // Use a local clone of https://github.com/simon04/Leaflet, on the `i18n` branch.
-import { Map, Marker, TileLayer, I18n, version } from 'local:Leaflet.i18n';
+import { Map, Marker, TileLayer, Control, I18n, version } from 'local:Leaflet.i18n';
 import registerAndSetLocale from 'local:registerAndSetLocale';
 
 /**
@@ -21,7 +21,10 @@ function leafletI18nApp () {
 
   const tiles = new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: `<a href="http://www.openstreetmap.org/copyright">${I18n.translate('© OpenStreetMap')}</a>`,
+    attribution: I18n.translate('© {link}OpenStreetMap{endlink}', {
+      link: '<a href="http://www.openstreetmap.org/copyright">',
+      endlink: '</a>',
+    }),
   })
   .addTo(map);
 
@@ -30,10 +33,14 @@ function leafletI18nApp () {
     title: I18n.translate('Marker: {name}', { name: 'Sterry Street, London, SE1.' }),
   })
   .on('click', (ev) => {
-    console.debug('Marker click:', ev);
+    console.log('Marker click:', ev);
     alert('click');
   })
+  .bindPopup(I18n.translate('Hello world!'))
   .addTo(map);
+
+  const scale = new Control.Scale().addTo(map);
+  const layers = new Control.Layers().addTo(map);
 
   document.querySelector('#version').textContent = version; // `Leaflet version: ${version}`;
   document.querySelector('#ua').textContent = navigator.userAgent;

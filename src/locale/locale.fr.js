@@ -15,6 +15,8 @@ export const locale_fr = {
   'Map data © {OSM} contributors.': 'Données cartographiques © contributeurs {OSM}.',
   'Tiles from {name}.': 'Tuiles de {name}.',
 
+  '© {link}OpenStreetMap{endlink}': '© {link}OpenStreetMap{endlink}',
+
   // Controls.
   'Close popup': 'Fermer', // Popup close button.
   map: 'carte', // mapContainerElem.ariaRoleDescription.
@@ -23,6 +25,7 @@ export const locale_fr = {
   'Marker: {name}': 'Marqueur: “{name}”',
   'Zoom in': 'Agrandir',
   'Zoom out': 'Dézoomer',
+  Layers: 'Couches', // Layers control.
 
   // Keyboard.
   'Keyboard shortcuts': 'Raccourcis clavier',
@@ -43,9 +46,15 @@ export const locale_fr = {
 
   /** Example strings for Leafletjs.com, etc.
    * @see https://leafletjs.com/
+   * @see https://leafletjs.com/examples/quick-start/
+   * @see https://leafletjs.com/examples/accessibility/
    */
+  'A pretty CSS popup.{br} Easily customizable.': 'Un joli popup CSS.{br} Facilement personnalisable.',
+  'I am a standalone popup.': 'Je suis un popup autonome.',
+  'You clicked the map at {latlng}': 'Vous avez cliqué sur la carte à {latlng}',
+  'Kyiv, Ukraine is the birthplace of Leaflet!': 'Kiev, en Ukraine, est le berceau de Leaflet!',
+
   'Hello world!': 'Bonjour le monde!',
   'Hello! I’m a translation test.': 'Bonjour! Je suis un test de traduction.',
   'Hello! I’m an accessibility and translation demo.': 'Bonjour! Je suis une démonstration d’accessibilité et de traduction.',
-  'I am a standalone popup.': 'Je suis un popup autonome.'
 };
