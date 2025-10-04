@@ -40,7 +40,7 @@ export function registerAndSetLocale () {
  * @example `/map.html?lang=fr`
  * @return {String} - A language code, for example "fr" or "zh-CN".
  */
-export function langFromUrlParam (paramName = 'lang', localesRegex = /^(fr|zh-CN)$/, defLang = 'en') {
+export function langFromUrlParam (paramName = 'lang', localesRegex = /^(fr|zh-CN|zh-hans)$/, defLang = 'en') {
   const params = new URL(window.location).searchParams;
   let langCode = params.get(paramName);
   if (langCode && localesRegex.test(langCode)) {

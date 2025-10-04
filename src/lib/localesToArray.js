@@ -9,7 +9,7 @@
  */
 
 const codeKeyRegex = /^code_([a-z]{2})$/;
-const codeValueRegex = /^[a-z]{2}(-[a-zA-Z]{2})?$/;
+const codeValueRegex = /^[a-z]{2}(-[a-zA-Z]{2,4})?$/;
 
 export function localesToArray (localesMod) {
   console.assert(typeof localesMod === 'object', '"localesMod" param - Expecting a module object.');

@@ -15,7 +15,8 @@ export const locale_fr = {
   'Map data © {OSM} contributors.': 'Données cartographiques © contributeurs {OSM}.',
   'Tiles from {name}.': 'Tuiles de {name}.',
 
-  '© {link}OpenStreetMap{endlink}': '© {link}OpenStreetMap{endlink}',
+  'OpenStreetMap contributors': 'Contributeurs d’OpenStreetMap',
+  '© {link}OpenStreetMap{endlink} contributors': '© {link}OpenStreetMap{endlink} contributors!!',
 
   // Controls.
   'Close popup': 'Fermer', // Popup close button.
@@ -25,7 +26,13 @@ export const locale_fr = {
   'Marker: {name}': 'Marqueur: “{name}”',
   'Zoom in': 'Agrandir',
   'Zoom out': 'Dézoomer',
+
   Layers: 'Couches', // Layers control.
+  // Scale control.
+  '{kilometers} km': '{kilometers} km',
+  '{meters} m': '{meters} m',
+  '{feet} ft': '{feet} ft',
+  '{miles} mi': '{miles} mi',
 
   // Keyboard.
   'Keyboard shortcuts': 'Raccourcis clavier',

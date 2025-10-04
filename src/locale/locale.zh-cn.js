@@ -4,7 +4,7 @@
  * @see https://translate.google.com/?sl=auto&tl=zh-CN&text=Map%20marker.%0AZoom%20in.%0AZoom%20out.%0AA%20JavaScript%20library%20for%20interactive%20maps.&op=translate;
  */
 
-export const code_zh = 'zh-CN';
+export const code_zh = 'zh-hans';
 export const file_zh = 'zh-cn';
 export const locale_zh = {
   // Attribution - Leaflet, OpenStreetMap, ...

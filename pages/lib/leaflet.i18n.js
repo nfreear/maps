@@ -2,6 +2,8 @@
 import { Map, Marker, TileLayer, Control, I18n, version } from 'local:Leaflet.i18n';
 import registerAndSetLocale from 'local:registerAndSetLocale';
 
+import SkipLinkPlugin from 'skip-link-plugin';
+
 /**
  * Trying out the new `I18n` class in Leaflet v2 alpha.
  *
@@ -19,9 +21,11 @@ function leafletI18nApp () {
     zoom: 13
   });
 
+  const skipPlugin = new SkipLinkPlugin().addTo(map);
+
   const tiles = new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: I18n.translate('© {link}OpenStreetMap{endlink}', {
+    X_attribution: I18n.translate('© {link}OpenStreetMap{endlink}', {
       link: '<a href="http://www.openstreetmap.org/copyright">',
       endlink: '</a>',
     }),

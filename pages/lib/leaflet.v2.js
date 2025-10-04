@@ -1,4 +1,4 @@
-import MOD, { Map, Marker, TileLayer, version } from 'dist:Leaflet.v2';
+import MOD, { Map, Marker, Circle, TileLayer, version } from 'dist:Leaflet.v2';
 
 /**
  *
@@ -27,6 +27,21 @@ function leafletAppV2 () {
   })
   .addTo(map);
 
+  const circle = new Circle([51.508, -0.11], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 400, // 500
+    // alt: 'Circle',
+    // keyboard: true,
+  })
+  .bindPopup('Circle click!')
+  .addTo(map);
+
+  circle._path.tabIndex = 0;
+  circle._path.setAttribute('role', 'button');
+  circle._path.setAttribute('aria-label', 'A Circle');
+
   // marker._shadow.addEventListener('click', (ev) => alert('Click'));
 
   document.querySelector('#version').textContent = version; // `Leaflet version: ${version}`;
@@ -34,7 +49,7 @@ function leafletAppV2 () {
 
   checkMarkerType();
 
-  console.log('> Leaflet V2:', version, map, marker, MOD);
+  console.log('> Leaflet V2:', version, map, marker, circle, MOD);
 }
 
 function checkMarkerType () {

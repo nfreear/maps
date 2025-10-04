@@ -12,13 +12,17 @@
 
 <p>Testing the new <tt>I18n</tt> internationalization class in Leaflet v2 (<a href="https://github.com/Leaflet/Leaflet/pull/9845">PR 9845</a>).</p>
 
-<nav aria-label="Language selector" class="lang-nav">
+<details open class="lang-nav">
+  <summary id="langLabel">Language selector</summary>
+
+<nav aria-labelledby="langLabel" >
   <ul>
     <li><a href="?">English (reset)</a>
     <li><a href="?lang=fr"><span lang="fr">Français</span> (French)</a>
-    <li><a href="?lang=zh-CN"><span lang="zh-cn">简体中文</span> (Simplified Chinese)</a>
+    <li><a href="?lang=zh-hans"><span lang="zh-hans">简体中文</span> (Simplified Chinese)</a>
   </ul>
 </nav>
+</details>
 
 <ul>
   <li><a href="https://leafletjs.com/2025/05/18/leaflet-2.0.0-alpha.html">Leaflet</a> version: <tt id="version">-</tt></li>
@@ -31,6 +35,9 @@
 </div>
 
 
+<p><a href="#_after">After the map</a>.</p>
+
+
 <script type="importmap">
 {
   "imports": {
@@ -39,7 +46,9 @@
     "local:registerAndSetLocale": "../src/lib/registerAndSetLocale.js",
     "local:localesToArray": "../src/lib/localesToArray.js",
     "local:Locales": "../src/locale/index.js",
-    "local:leafletI18nApp": "./lib/leaflet.i18n.js"
+    "local:leafletI18nApp": "./lib/leaflet.i18n.js",
+
+    "skip-link-plugin": "../src/leaflet/plugin/SkipLinkPlugin.js"
   }
 }
 </script>
