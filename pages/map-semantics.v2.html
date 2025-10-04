@@ -7,8 +7,8 @@
 
   <link rel="codepen" href="https://codepen.io/nfreear/pen/YPPemRx">
 
-  <title>Demo map — structure & semantics</title>
-  <h1>Demo map — structure & semantics</h1>
+  <title>Demo map — structure & semantics (v2)</title>
+  <h1>Demo map — structure & semantics (version 2)</h1>
 
 <article id="mapDesc">
   <p>
@@ -18,8 +18,8 @@
     Use the <q>Map style</q> radio buttons below to remove the style from the map and reveal the underlying structure and semantics of the HTML.
   </p>
   <p>
-    Note that this is an <em>idealised</em> demonstration of semantic markup.
-    For a more realistic and practical example, consider <a href="./map-semantics.v2.html">version 2</a>.
+    Note that this is a practical demonstration of <em>semi-semantic</em> markup.
+    For a more <em>idealised</em> example, consider <a href="./map-semantics.html">version 1</a>.
   </p>
   <p>
     (Note, the map is just a mock up &mdash; zoom and panning do NOT work!)
@@ -34,48 +34,43 @@
 
 
 <!-- A <section> element with a computed name has a role of "region". -->
-<section
+<div
   id="mapRegion"
+  role="region"
   aria-roledescription="map"
-  aria-labelledby="mapLabel"
+  aria-label="Map region: 'A map of the world'"
   aria-describedby="mapDesc"
   >
-  <h2 id="mapLabel">Map region: <q>A map of the world</q></h2>
 
   <button id="panButton" data-icon="✥">
     <sr-only>Use arrow keys to pan, +/- keys to zoom in and out.</sr-only>
   </button>
 
-  <fieldset id="pinsGroup" aria-labelledby="pinsLabel">
-    <h3 id="pinsLabel">Map pins</h3>
-    <ul aria-labelledby="pinsLabel">
-      <li>
+  <div id="pinsGroup" role="group" aria-label="Map markers">
+    <div role="list">
+      <div role="listitem">
         <details data-pin-id="uk">
           <summary><sr-only>Marker A: London, UK</sr-only></summary>
           <div class="pinBody">
             <p>Some information about London …</p>
           </div>
         </details>
-      </li>
-      <li><button data-pin-id="zh"><sr-only>Marker B: “Peking”, China</sr-only></button></li>
-      <li><button data-pin-id="tim"><sr-only>Marker C: “Timbuctoo, Soud Guinea”</button></li>
-    </ul>
-  </fieldset>
+      </div>
+      <div role="listitem"><button data-pin-id="zh"><sr-only>Marker B: “Peking”, China</sr-only></button></div>
+      <div role="listitem"><button data-pin-id="tim"><sr-only>Marker C: “Timbuctoo, Soud Guinea”</button></div>
+    </div>
+  </div>
 
-  <fieldset id="controlsGroup" aria-labelledby="controlsLabel">
-    <h3 id="controlsLabel">Map controls</h3>
-    <ul>
-      <li><button name="zoomInButton" data-icon="+"><sr-only>Zoom in</sr-only></button></li>
-      <li><button name="zoomOutButton" data-icon="&minus;"><sr-only>Zoom out</sr-only></button></li>
-    </ul>
-  </fieldset>
+  <div id="controlsGroup" role="group" aria-label="Map controls">
+    <div role="list">
+      <div role="listitem"><button name="zoomInButton" data-icon="+"><sr-only>Zoom in</sr-only></button></div>
+      <div role="listitem"><button name="zoomOutButton" data-icon="&minus;"><sr-only>Zoom out</sr-only></button></div>
+    </div>
+  </div>
 
-  <fieldset id="attributionGroup" aria-labelledby="attribLabel">
-    <h3 id="attribLabel">Attribution</h3>
-    <ul>
-      <li><a href="https://commons.wikimedia.org/wiki/Public_domain">Map tile — License: Public domain</a></li>
-    </ul>
-  </fieldset>
+  <div id="attributionGroup" role="group" aria-label="Attribution">
+    <a href="https://commons.wikimedia.org/wiki/Public_domain">Map tile — License: Public domain</a></li>
+  </div>
 
   <dialog aria-labelledby="dlgLabel">
     <h3 id="dlgLabel">Map dialog</h3>
