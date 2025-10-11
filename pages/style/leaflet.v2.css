@@ -41,6 +41,39 @@
   }
 }
 
+/*
+https://developer.chrome.com/blog/anchor-positioning-api
+*/
+.leaflet-popover-marker {
+  display: inline-block;
+
+  [popover] {
+    border-color: gray;
+    border-radius: .5rem;
+    font-size: .9rem;
+    padding: 1rem;
+  }
+}
+
+.leaflet-popover-marker.anchor-popover {
+  /* X_anchor-name: --anchor-el; */
+
+  /* & > input {
+    anchor-name: --anchor-el;
+  } */
+
+  [popover] {
+    /* position-anchor: --anchor-el; */
+    position-area: top center;
+    X_top: anchor(bottom);
+    X_left: anchor(left);
+
+    margin: 0;
+    X_inset: unset;
+    X_position: absolute;
+  }
+}
+
 .lang-nav {
   background-color: #f4f4f4;
   border: 1px solid silver;

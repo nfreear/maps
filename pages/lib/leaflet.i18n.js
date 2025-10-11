@@ -1,8 +1,9 @@
 // Use a local clone of https://github.com/simon04/Leaflet, on the `i18n` branch.
-import { Map, Marker, TileLayer, Control, I18n, version } from 'local:Leaflet.i18n';
+import { Map, Marker, TileLayer, Control, I18n, version } from 'leaflet'; // Was: 'local:Leaflet.i18n';
 import registerAndSetLocale from 'local:registerAndSetLocale';
 
-import SkipLinkPlugin from 'skip-link-plugin';
+import { PopoverMarker, SkipLinkPlugin } from 'leaflet-plugins';
+import { fixMapContainer } from 'leaflet.a11y';
 
 /**
  * Trying out the new `I18n` class in Leaflet v2 alpha.
@@ -19,6 +20,10 @@ function leafletI18nApp () {
   const map = new Map('map', {
     center: [51.505, -0.09],
     zoom: 13
+  });
+
+  fixMapContainer(map, {
+    name: 'My TEST',
   });
 
   const skipPlugin = new SkipLinkPlugin().addTo(map);
@@ -43,6 +48,10 @@ function leafletI18nApp () {
   .bindPopup(I18n.translate('Hello world!'))
   .addTo(map);
 
+  const pmarker = new PopoverMarker([51.515, -0.098])
+    .setContent("Hello, I'm a popover!")
+    .addTo(map);
+
   const scale = new Control.Scale().addTo(map);
   const layers = new Control.Layers().addTo(map);
 
@@ -51,7 +60,7 @@ function leafletI18nApp () {
   document.querySelector('#locale').textContent = locale.code;
   document.querySelector('#map').setAttribute('lang', locale.code);
 
-  console.log('>> Leaflet V2:', version, map, marker);
+  console.log('>> Leaflet i18n:', version, map, marker);
 }
 
 export default leafletI18nApp;

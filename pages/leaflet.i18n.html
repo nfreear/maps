@@ -34,13 +34,14 @@
   <p lang="en">Loading map…</p>
 </div>
 
-
 <p><a href="#_after">After the map</a>.</p>
 
 
 <script type="importmap">
 {
   "imports": {
+    "leaflet": "../src/leaflet/alpha/leaflet.js",
+
     "dist:Leaflet.v2": "https://unpkg.com/leaflet@>=2.0.0-alpha.1/dist/leaflet.js",
     "local:Leaflet.i18n": "../leaflet-i18n/src/Leaflet.js",
     "local:registerAndSetLocale": "../src/lib/registerAndSetLocale.js",
@@ -48,7 +49,9 @@
     "local:Locales": "../src/locale/index.js",
     "local:leafletI18nApp": "./lib/leaflet.i18n.js",
 
-    "skip-link-plugin": "../src/leaflet/plugin/SkipLinkPlugin.js"
+    "leaflet.a11y": "../leaflet-a11y/packages/Leaflet.a11y/index.js",
+
+    "leaflet-plugins": "../src/leaflet/plugins.js"
   }
 }
 </script>

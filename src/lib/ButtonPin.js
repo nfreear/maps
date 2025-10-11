@@ -1,7 +1,11 @@
-
 const { Overlay } = window.ol;
 const { CustomEvent } = window;
 
+/**
+ * ButtonPin - for OpenLayers.
+ *
+ * @copyright © Nick Freear, 06-May-2025.
+ */
 export class ButtonPin extends Overlay {
   get _clickEvent () { return 'pin:click'; }
   get button () { return this._button; }

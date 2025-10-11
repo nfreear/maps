@@ -1,9 +1,13 @@
-import { Control, I18n } from 'local:Leaflet.i18n';
+// Add "leaflet" to your "importmap".
+import { Control, I18n, Map } from 'leaflet';
 
 /**
- * Plugin to add links to skip over markers, and over an entire Leaflet map.
+ * Prototype: Plugin to add links to skip over markers, and over an entire Leaflet map.
+ * @copyright © Nick Freear, 23-Sep-2025.
  */
 export class SkipLinkPlugin extends Control {
+  #map;
+
   static {
 		// @section
 		// @aka Control.Zoom options
@@ -22,6 +26,8 @@ export class SkipLinkPlugin extends Control {
 	}
 
 	onAdd(map) {
+    console.assert(map instanceof Map, 'Expecting a map instance.');
+    this.#map = map;
     const { options } = this;
     const container = document.createElement('div');
     container.classList.add('leaflet-control-skip');
@@ -79,7 +85,8 @@ export class SkipLinkPlugin extends Control {
   /** @todo Append random part??
    */
   #makeId (id) {
-    return id;
+    console.assert(this.#map._leaflet_id, 'Expecting a Leaflet ID.');
+    return `${id}-${this.#map._leaflet_id}`;
   }
 }
 
