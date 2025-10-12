@@ -8,6 +8,10 @@
 export const code_fr = 'fr';
 export const file_fr = 'fr';
 export const locale_fr = {
+  _localeCode: 'fr',
+  _localeName: 'Français',
+  _localeNameEn: 'French',
+
   // Attribution - Leaflet, OpenStreetMap, ...
   'A JavaScript library for interactive maps': 'Une bibliothèque JavaScript pour cartes interactives',
   '© OpenStreetMap': '© Contributeurs d’OpenStreetMap',

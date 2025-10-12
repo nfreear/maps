@@ -7,6 +7,10 @@
 export const code_zh = 'zh-hans';
 export const file_zh = 'zh-cn';
 export const locale_zh = {
+  _localeCode: 'zh-hans',
+  _localeName: '简体中文',
+  _localeNameEn: 'Simplified Chinese',
+
   // Attribution - Leaflet, OpenStreetMap, ...
   'A JavaScript library for interactive maps': '一个用于交互式地图的 JavaScript 库。',
   '© OpenStreetMap': 'OpenStreetMap ©',

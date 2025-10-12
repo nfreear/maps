@@ -3,5 +3,5 @@ leaflet*
 !pages/**/leaflet*
 !src/**/leaflet*
 test*.html
-
+locales.js
 Keyboard*

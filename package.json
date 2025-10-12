@@ -1,5 +1,6 @@
 {
   "private": true,
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nfreear/maps.git"
@@ -9,6 +10,7 @@
     "servor": "^4.0.2"
   },
   "scripts": {
+    "build": "node src/lib/build.js > src/locales.js",
     "start": "servor"
   }
 }
