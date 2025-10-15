@@ -43,7 +43,7 @@ export class PopoverMarker extends Layer {
   }
 
   setContent (content) {
-    console.assert(typeof content === 'string', 'Expecting a string.'); // Or, HTMLElement.
+    console.assert(typeof content === 'string', 'Expecting a string.'); // Or, HTMLElement?
     this.options.content = content;
     return this;
   }
@@ -66,14 +66,17 @@ export class PopoverMarker extends Layer {
     console.debug('PopoverMarker.onAdd:', pos, this);
   }
 
-  get #popoverTargetId () {
+  get leafletId () {
     console.assert(this._leaflet_id, 'Expecting a leaflet ID.');
-    return `popover-target-${this._leaflet_id}`;
+    return this._leaflet_id;
+  }
+
+  get #popoverTargetId () {
+    return `popover-target-${this.leafletId}`;
   }
 
   get #anchorId () {
-    console.assert(this._leaflet_id, 'Expecting a leaflet ID.');
-    return `--popover-anchor-${this._leaflet_id}`;
+    return `--popover-anchor-${this.leafletId}`;
   }
 
   #applyAnchorStyle () {
